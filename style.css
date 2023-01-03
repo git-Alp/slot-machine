@@ -1,0 +1,227 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(180deg, rgba(66,24,103,1) 0%, rgba(120,88,148,1) 100%);
+}
+
+.prizes {
+  display: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 80vh;
+}
+
+.icon {
+  width: 80px;
+  height: 100px;
+  
+}
+
+.slots {
+  width: 768px;
+  height: 750px;
+  padding: 150px;
+  background-image: url(/images/slot-machine.png);
+  background-size: 700px;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.window {
+  position: relative;
+  overflow: hidden;
+  top: 111px;
+  left: -22px;
+  height: 255px;
+  width: 491px;
+  padding: 0px 18px;
+  border-radius: 5px;
+  background: linear-gradient(0deg, rgba(131,130,130,1) 0%, rgba(34,32,32,1) 100%);
+}
+
+.outer-col {
+  width: 135px;
+  float: left;
+  margin: -45px 8px 0 8px;
+  background: linear-gradient(180deg, rgba(243,231,171,1) 0%, rgba(191,142,52,1) 100%);
+  height: 300px;
+  overflow: hidden;
+  /* box-shadow: 0 0px 2px 12px; */
+}
+
+.col {
+  padding: 0 10px;
+  will-change: true;
+}
+
+.row {
+  margin: 20px 0;
+  width: 100%;
+  height: 75px;
+}
+.row:nth-child(23), .row:nth-child(25) {
+  filter: blur(3px);
+}
+
+.spin-button {
+  margin-top: -246px;
+  margin-right: -386px;
+  width: 140px;
+  height: 170px;
+
+  background: linear-gradient(0deg, rgba(243,231,171,1) 0%, rgba(191,142,52,1) 100%);
+  color: #b8443d;
+  border: none;
+  border-radius: 80px;
+
+  letter-spacing: -1px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 52px;
+
+  cursor: pointer;
+  transform: rotateX(-75deg) rotateY(0deg);
+}
+
+.spin-button:enabled:active {
+  margin-top: -250px;
+  width: 145px;
+  height: 175px;
+  box-shadow: 0 3px 15px -2px;
+  letter-spacing: 0;
+}
+
+.slots.spinning .col {
+  animation: scroll 3s cubic-bezier(.5,0,.5,1) 1, blur 3s cubic-bezier(.5,0,.5,1) 1;
+  animation-fill-mode: forwards;
+}
+
+.slots.spinning .outer-col:nth-of-type(1) .col {
+  animation-delay: 0.2s;
+}
+
+.slots.spinning .outer-col:nth-of-type(2) .col  {
+  animation-delay: 0.4s;
+}
+
+.slots.spinning .outer-col:nth-of-type(3) .col {
+  animation-delay: 0.6s;
+  animation-duration: 4s;
+  animation-fill-mode: forwards;
+}
+
+
+@keyframes scroll {
+  0% {transform: translate3d(0,0,0);}
+  90% {transform: translate3d(0,calc(-100% + 350px),0);}
+  100% {transform: translate3d(0,calc(-100% + 350px),0);}
+}
+@keyframes blur {
+  0% {filter: blur(0);}
+  10% {filter: blur(0);}
+  30% {filter: blur(6px);}
+  60% {filter: blur(6px);}
+  80% {filter: blur(0);}
+}
+
+@keyframes wiggle {
+  0% {transform: rotate(10deg);}
+  50% {transform: rotate(-10deg);}
+}
+
+
+.popup__overlay {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.popup__overlay.-open {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin: 70px auto;
+  padding: 20px;
+  width: 35%;
+
+  background: #f4f4f4;
+  border-radius: 5px;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup__container h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+.popup__content {
+  font-family: Tahoma, Arial, sans-serif;
+  font-family: 16px;
+}
+
+.popup__container .popup__close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup__container .popup__close:hover {
+  color: #06D85F;
+}
+.popup__container .popup__content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+.popup__button {
+  display: none;
+  padding: 15px 20px;
+  margin-top: 20px;
+
+  background-color: #333;
+  color: #06D85F;
+  font-family: Tahoma, Arial, sans-serif;
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+.popup__button.-show {
+  display: block;
+}
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
+  }
+  .popup__container{
+    width: 70%;
+  }
+}

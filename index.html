@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slot Machine</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+  <div class="popup__overlay" data-overlay>
+    <div class="popup__container" data-popup-container>
+      <h2 class="popup__title" data-popup-title>TEBRİKLER!</h2>
+      <a class="popup__close" href="#" close-button>&times;</a>
+      <div class="popup__content" data-popup-content></div>
+      <button class="popup__button" try-again-button>Hadi Dene Hadi..</button>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="slots" data-slots>
+      <div class="window">
+        <div class="outer-col">
+          <div class="col" data-column></div>
+        </div>
+        <div class="outer-col">
+          <div class="col" data-column></div>
+        </div>
+        <div class="outer-col">
+          <div class="col" data-column></div>
+        </div>
+      </div>
+    </div>
+
+    <input class="spin-button" type="button" onclick="spin(this)" value="SPIN" spin-button />
+  </div>
+
+<script src="/app.js"></script>
+</body>
+</html>
